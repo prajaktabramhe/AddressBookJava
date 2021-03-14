@@ -105,6 +105,26 @@ public class AddressBookMain
         }
     }
 
+    public void deletePerson()
+    {
+        System.out.println("enter First name to delete details:");
+        String name = scan.nextLine();
+
+        for (int i=0; i < contactbook.size(); i++)
+        {
+            String personName = contactbook.get(i).firstName;
+
+            if (name.equals(personName))
+            {
+                contactbook.remove(i);
+                System.out.println("this person details is deleted");
+                break;
+            }
+            else
+                System.out.println("please enter valid name");
+        }
+    }
+
     public static void main(String[] args)
     {
         System.out.println("-------------Welcome To The Address Book Problem--------------------");
@@ -113,7 +133,8 @@ public class AddressBookMain
         System.out.println("1.Add Contact");
         System.out.println("2.Edit Contact");
         System.out.println("3.Display Contact");
-        System.out.println("4.Exit");
+        System.out.println("4.Delete Contact");
+        System.out.println("5.Exit");
         int k=0;
         while(k==0)
         {
@@ -130,7 +151,11 @@ public class AddressBookMain
                 case 3:
                     address.editPerson();
                     break;
+
                 case 4:
+                    address.deletePerson();
+                    break;
+                case 5:
                     System.out.println("Exit");
                     k = 1;
                     break;
