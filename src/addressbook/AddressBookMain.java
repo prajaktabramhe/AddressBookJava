@@ -35,6 +35,7 @@ public class AddressBookMain
         Contact contact = new Contact(first, last, address, city, state,  email,mobileNo, zip);
         contactbook.add(contact);
         System.out.println("Contact added Successfully");
+        System.out.println("\n You can add multiple person's entry");
     }
     public void displayPerson()
     {
