@@ -1,4 +1,5 @@
 package addressbook;
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -174,14 +175,26 @@ public class AddressBookMain
         System.out.println("Enter City name to search Person by city name");
         String userCity = scan.nextLine();
 
-        contactbook.stream().filter(map -> map.getCity().contains(userCity)).forEach(contactbook -> System.out.println(contactbook));
+       Dictionary Citywisedict = new Hashtable();
+        contactbook.stream().filter(map -> map.getCity().contains(userCity)).forEach(contactbook -> Citywisedict.put(contactbook.getFirstName(),userCity));
+        System.out.println("City Name: " + userCity);
+       for (Enumeration i = Citywisedict.keys(); i.hasMoreElements();)
+        {
+            System.out.println("Name : " + i.nextElement());
+        }
     }
     public void searchPersonByState()
     {
         System.out.println("Enter the state name to search Person by state name");
         String userState = scan.nextLine();
 
-        contactbook.stream().filter(map -> map.getState().contains(userState)).forEach(contactbook -> System.out.println(contactbook));
+        Dictionary Statewisedict = new Hashtable();
+        contactbook.stream().filter(map -> map.getState().contains(userState)).forEach(contactbook -> Statewisedict.put(contactbook.getFirstName(),userState));
+        System.out.println("State Name: " + userState);
+        for (Enumeration i = Statewisedict.keys(); i.hasMoreElements();)
+        {
+            System.out.println("Name : " + i.nextElement());
+        }
     }
     public static void main(String[] args)
     {
