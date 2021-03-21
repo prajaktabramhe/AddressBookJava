@@ -12,6 +12,7 @@ public class AddressBookMain
 
         System.out.println("Enter First Name");
         String first = scan.nextLine();
+        duplicateCheck(first);
 
         System.out.println("Enter Last Name");
         String last = scan.nextLine();
@@ -141,9 +142,28 @@ public class AddressBookMain
 
         System.out.println("Existing AddressBook Names are : ");
 
-        for (AddressBookList addressBookList : addressBookNameList) {
+        for (AddressBookList addressBookList : addressBookNameList)
+        {
             System.out.println(addressBookList);
         }
+    }
+
+    public void duplicateCheck(String first)
+    {
+    for (int k = 0; k < contactbook.size(); k++)
+    {
+        String contactName = contactbook.get(k).firstName;
+
+        if (first.equals(contactName))
+        {
+            System.out.println("This Person is Already Present");
+        }
+        else
+        {
+            System.out.println("You can Add this Person");
+            break;
+        }
+    }
     }
     public static void main(String[] args)
     {
@@ -168,10 +188,10 @@ public class AddressBookMain
                     address.addContact();
                     break;
                 case 2:
-                    address.displayPerson();
+                    address.editPerson();
                     break;
                 case 3:
-                    address.editPerson();
+                    address.displayPerson();
                     break;
 
                 case 4:
