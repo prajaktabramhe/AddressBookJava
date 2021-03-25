@@ -197,24 +197,61 @@ public class AddressBookMain
         }
     }
 
-    public void countByCity(){
+    public void countByCity()
+    {
         System.out.println(contactbook.stream().collect(Collectors.groupingBy((Contact C) -> C.getCity())));
         System.out.println((contactbook.stream().collect(Collectors.groupingBy((Contact C) -> C.getCity(),Collectors.counting()))));
     }
 
-    public void countByState(){
+    public void countByState()
+    {
         System.out.println(contactbook.stream().collect(Collectors.groupingBy((Contact C) -> C.getState())));
         System.out.println((contactbook.stream().collect(Collectors.groupingBy((Contact C) -> C.getState(),Collectors.counting()))));
     }
-    public void sortPersonByFirstname(){
-        for (Contact C : contactbook){
+    public void sortPersonByFirstname()
+    {
+        for (Contact C : contactbook)
+        {
             System.out.println(C.getFirstName());
         }
         System.out.println("-----------After sorting the entry by First name-----");
         contactbook.stream();
         contactbook.sort(Comparator.comparing(Contact::getFirstName));
-        contactbook.forEach((Contact C) -> System.out.println(C.getFirstName() + " " + C.getLastName());
+        contactbook.forEach((Contact C) -> System.out.println(C.getFirstName() + " " + C.getLastName()));
 
+    }
+    public void sortPersonByCity()
+    {
+       for (Contact C : contactbook)
+       {
+           System.out.println(C.getCity());
+       }
+        System.out.println("---------After sorting the entry by City----------");
+        contactbook.stream();
+        contactbook.sort(Comparator.comparing(Contact::getCity));
+        contactbook.forEach((Contact C) -> System.out.println(C.getFirstName() + " " + C.getLastName() + " " + C.getCity()));
+    }
+    public void sortPersonByState()
+    {
+        for (Contact C : contactbook)
+        {
+            System.out.println(C.getState());
+        }
+        System.out.println("---------After sorting the entry by State----------");
+        contactbook.stream();
+        contactbook.sort(Comparator.comparing(Contact::getState));
+        contactbook.forEach((Contact C) -> System.out.println(C.getFirstName() + " " + C.getLastName() + " " + C.getCity() + " " + C.getState()));
+    }
+    public void sortPersonByZip()
+    {
+        for (Contact C : contactbook)
+        {
+            System.out.println(C.getZip());
+        }
+        System.out.println("---------After sorting the entry by Zip----------");
+        contactbook.stream();
+        contactbook.sort(Comparator.comparing(Contact::getZip));
+        contactbook.forEach((Contact C) -> System.out.println(C.getFirstName() + " " + C.getLastName() + " " + C.getCity() + " " + C.getState() + " " + C.getZip()));
     }
     public static void main(String[] args)
     {
@@ -232,7 +269,10 @@ public class AddressBookMain
         System.out.println("9. count By countByCity");
         System.out.println("10. count By countByState");
         System.out.println("11. sort person name By sortPersonByFirstname");
-        System.out.println("12.Exit");
+        System.out.println("12.sortPersonByCity");
+        System.out.println("13.sortPersonByState");
+        System.out.println("14.sortPersonByZip");
+        System.out.println("15.Exit");
         int k=0;
         while(k==0)
         {
@@ -249,7 +289,6 @@ public class AddressBookMain
                 case 3:
                     address.displayPerson();
                     break;
-
                 case 4:
                     address.deletePerson();
                     break;
@@ -273,7 +312,17 @@ public class AddressBookMain
                     break;
                 case 11:
                     address.sortPersonByFirstname();
+                    break;
                 case 12:
+                    address.sortPersonByCity();
+                    break;
+                case 13:
+                    address.sortPersonByState();
+                    break;
+                case 14:
+                    address.sortPersonByZip();
+                    break;
+                case 15:
                     System.out.println("Exit");
                     k = 1;
                     break;
