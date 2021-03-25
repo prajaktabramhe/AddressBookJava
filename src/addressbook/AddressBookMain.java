@@ -206,6 +206,16 @@ public class AddressBookMain
         System.out.println(contactbook.stream().collect(Collectors.groupingBy((Contact C) -> C.getState())));
         System.out.println((contactbook.stream().collect(Collectors.groupingBy((Contact C) -> C.getState(),Collectors.counting()))));
     }
+    public void sortPersonByFirstname(){
+        for (Contact C : contactbook){
+            System.out.println(C.getFirstName());
+        }
+        System.out.println("-----------After sorting the entry by First name-----");
+        contactbook.stream();
+        contactbook.sort(Comparator.comparing(Contact::getFirstName));
+        contactbook.forEach((Contact C) -> System.out.println(C.getFirstName() + " " + C.getLastName());
+
+    }
     public static void main(String[] args)
     {
         System.out.println("-------------Welcome To The Address Book Problem--------------------");
@@ -216,10 +226,13 @@ public class AddressBookMain
         System.out.println("3.Display Contact");
         System.out.println("4.Delete Contact");
         System.out.println("5.Add New Address Book");
-        System.out.println("6.Display New Address Book");
+        System.out.println("6.Display All Address Book");
         System.out.println("7.Search Person By City");
         System.out.println("8. Search Person By State");
-        System.out.println("9.Exit");
+        System.out.println("9. count By countByCity");
+        System.out.println("10. count By countByState");
+        System.out.println("11. sort person name By sortPersonByFirstname");
+        System.out.println("12.Exit");
         int k=0;
         while(k==0)
         {
@@ -259,6 +272,8 @@ public class AddressBookMain
                     address.countByState();
                     break;
                 case 11:
+                    address.sortPersonByFirstname();
+                case 12:
                     System.out.println("Exit");
                     k = 1;
                     break;
